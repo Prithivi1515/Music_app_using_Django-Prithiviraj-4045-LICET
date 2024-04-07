@@ -1,0 +1,45 @@
+{% extends 'musicbeats/basic.htm' %}
+{% block title %}Login{% endblock %}
+
+{% block body %}
+
+<h2 class="text-danger text-center pt-2">Upload Your Music</h2>
+
+<div class="container my-3">
+    <form action="/musicbeats/upload" enctype="multipart/form-data" method="POST">{% csrf_token %}
+        <div class="form-group">
+          <label for="musicName">Your Music Name</label>
+          <input type="text" class="form-control" id="musicName" name="name" placeholder="Your Song Name">
+        </div>
+        
+        <div class="form-group">
+            <label for="singerName">Singer Name</label>
+            <input type="text" class="form-control" id="singerName" name="singer" placeholder="Singer Name">
+        </div>
+
+        <div class="form-group">
+            <label for="imageLink">Image Link: (Associated With Your Music)</label>
+            <input type="text" class="form-control" id="imageLink" name="image" placeholder="Link to Image">
+        </div>    
+
+        <div class="form-group">
+          <label for="movieName">Movie Name</label>
+          <input type="text" class="form-control" id="movieName" placeholder="Movie name in which this song is their" name="movie">
+        </div>
+
+        <div class="form-group">
+            <label for="creditLink">Credit</label>
+            <input type="text" class="form-control" id="creditLink" placeholder="Add Credit Link" name="credit">
+        </div>
+
+        <div class="form-group">
+            <label for="musicFile">Example file input</label>
+            <input type="file" class="form-control-file" id="musicFile" name="file">
+        </div>
+        
+        <div class="mt-3 mb-3">
+            <button type="submit" class="btn btn-primary">Upload...</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

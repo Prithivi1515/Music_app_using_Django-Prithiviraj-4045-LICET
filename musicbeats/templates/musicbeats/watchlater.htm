@@ -1,0 +1,31 @@
+{% extends 'musicbeats/basic.htm' %}
+{% block title %}MusicBeats{% endblock %}
+
+{% block body %}
+{% load static %} 
+<div class="container">
+    <h1 class="text-danger text-center">Your Playlist</h1>
+
+    {% if song|length < 1 %}
+    <h3 class="text-center pt-5">You have no songs in your playlist</h3>
+    {% endif %}
+
+    {% for i in song reversed %}
+    <div class="card mb-3 bg-dark text-light" style="max-width: 940px; padding-top: 0%;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="{{ i.image }}" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title text-success font-weight-bold">{{ i.name }}</h5>
+                    <!-- <p class="card-text">Tags: {{ i.tags }}</p> -->
+                    <p class="card-text">Movie: {{ i.movie }}</p>
+                    <a href="/musicbeats/songs/{{ i.song_id }}" class="btn btn-outline-danger">Play now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

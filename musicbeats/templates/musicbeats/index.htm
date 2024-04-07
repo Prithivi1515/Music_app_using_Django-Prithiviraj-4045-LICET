@@ -1,0 +1,43 @@
+{% extends 'musicbeats/basic.htm' %}
+{% block title %}MusicBeats{% endblock %}
+
+{% block body %}
+    {% load static %} 
+
+    <h2 class="text-light pl-4 pt-2" style="font-family: 'Verdana';">Trending Songs</h2>
+
+    <div class="row pt-2 pl-3">
+    {% for i in song %}
+    <div class="pl-2 pt-1">
+        <div class="card text-white bg-dark" style="width: 18rem;">
+            <img src="{{ i.image }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ i.name }}</h5>
+                <p class="card-text text-success">Movie: {{ i.movie }}</p>
+                <a href="/musicbeats/songs/{{ i.song_id }}" class="btn btn-outline-light">Add to playlist</a>
+                <a href="/musicbeats/songs/{{ i.song_id }}" class="btn btn-outline-light">Play now</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    <hr>
+
+    <h3 class="text-light pl-4 pt-2" style="font-family: 'Verdana';">Your Playlist</h3>
+
+    <div class="row pt-2 pl-3">
+    {% for i in watch reversed %}
+    <div class="pl-2 pt-1">
+        <div class="card text-white bg-dark" style="width: 18rem;">
+            <img src="{{ i.image }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ i.name }}</h5>
+                <p class="card-text text-success">Movie: {{ i.movie }}</p>
+                <a href="/musicbeats/songs/{{ i.song_id }}" class="btn btn-outline-light">Play now</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    <hr>
+{% endblock %}
